@@ -1,13 +1,14 @@
 import React from "react";
 import "./Header.css";
 
-export default function Header(props) {
-  return (
-    <header className="wrapper">
-      <h1>{props.title}</h1>
-      <button onClick={props.onAddItemButtonClick}>
-        {props.addButtonText}
-      </button>
-    </header>
-  );
-}
+export default React.forwardRef((props, ref) => {
+    return (
+        <header className="wrapper">
+            <h1>{props.title}</h1>
+            <button disabled={props.disabled} ref={ref} onClick={props.onAddItemButtonClick}>
+                {props.addButtonText}
+            </button>
+        </header>
+    );
+});
+

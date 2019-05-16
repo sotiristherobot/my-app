@@ -9,22 +9,26 @@ class Home extends React.Component {
   constructor(props) {
     super(props);
 
-    this.onAddItemButtonClick = this.onAddItemButtonClick.bind(this);
+    this.addItemButtonRef = React.createRef();
   }
 
   componentDidMount() {
     console.log("component mounted");
   }
 
-  onAddItemButtonClick() {}
+  onAddItemButtonClick() {
+     this.addItemButtonRef.current.disabled = true;
+  }
 
   render() {
     return (
       <div>
         <Header
+          ref={this.addItemButtonRef}
+          disabled={false}
           title={"Sotiris Home"}
           addButtonText={"Add item"}
-          onAddItemButtonClick={this.onAddItemButtonClick}
+          onAddItemButtonClick={this.onAddItemButtonClick.bind(this)}
         />
         <h1>Home</h1>;
       </div>
