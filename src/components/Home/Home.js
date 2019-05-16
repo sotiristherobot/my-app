@@ -2,9 +2,15 @@ import React, { Component } from "react";
 
 // components
 import Header from "./Header";
+import List from "../List/List";
 
 class Home extends React.Component {
-  state = {};
+  state = {
+      items: [
+          {id: '0', title: 'kostis', content: 'kostoulla'},
+          {id: '1', title: 'gianoulla', content: 'giannis'}
+      ]
+  };
 
   constructor(props) {
     super(props);
@@ -18,6 +24,11 @@ class Home extends React.Component {
 
   onAddItemButtonClick() {
      this.addItemButtonRef.current.disabled = true;
+     this.setState((prevState, props) => (
+         {
+             items: [{id: '2', title: 'giorgoulla', content: 'giorgakis'}, ...prevState.items]
+         }
+    ));
   }
 
   render() {
@@ -30,7 +41,7 @@ class Home extends React.Component {
           addButtonText={"Add item"}
           onAddItemButtonClick={this.onAddItemButtonClick.bind(this)}
         />
-        <h1>Home</h1>;
+        <List items={this.state.items}/>
       </div>
     );
   }
