@@ -6,10 +6,7 @@ import List from "../List/List";
 
 class Home extends React.Component {
   state = {
-      items: [
-          {id: '0', title: 'kostis', content: 'kostoulla'},
-          {id: '1', title: 'gianoulla', content: 'giannis'}
-      ]
+      items: []
   };
 
   constructor(props) {
@@ -18,17 +15,8 @@ class Home extends React.Component {
     this.addItemButtonRef = React.createRef();
   }
 
-  componentDidMount() {
-    console.log("component mounted");
-  }
-
   onAddItemButtonClick() {
      this.addItemButtonRef.current.disabled = true;
-     this.setState((prevState, props) => (
-         {
-             items: [{id: '2', title: 'giorgoulla', content: 'giorgakis'}, ...prevState.items]
-         }
-    ));
   }
 
   render() {
