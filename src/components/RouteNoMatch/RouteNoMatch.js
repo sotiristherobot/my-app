@@ -1,5 +1,11 @@
 import React from 'react';
+import {Link} from "react-router-dom";
 
-export default function RouteNoMatch(props) {
-    return <h1>No route for this</h1>
+export default function RouteNoMatch() {
+    return (
+        <div>
+            <p>No route for this</p>
+            <Link to={"/"}>back to home</Link>
+        </div>
+    )
 }
