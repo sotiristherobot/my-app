@@ -6,7 +6,10 @@ import List from "../List/List";
 
 class Home extends React.Component {
   state = {
+    items: {
+      itemId: 0, // keep track of created rows
       items: []
+    }
   };
 
   constructor(props) {
@@ -15,8 +18,32 @@ class Home extends React.Component {
     this.addItemButtonRef = React.createRef();
   }
 
+  createItem() {
+    this.setState(prevState => {
+      let nextItemId = prevState.items.itemId + 1;
+      return {
+        items: {
+          itemId: nextItemId,
+          items: [
+            ...prevState.items.items,
+            {
+              id: nextItemId,
+              title: "title",
+              content: "content"
+            }
+          ]
+        }
+      };
+    });
+  }
+
+  onTextFieldInputChange(e, id) {
+    console.log(id);
+  }
+
   onAddItemButtonClick() {
-     this.addItemButtonRef.current.disabled = true;
+    // this.addItemButtonRef.current.disabled = true;
+    this.createItem();
   }
 
   render() {
@@ -29,7 +56,7 @@ class Home extends React.Component {
           addButtonText={"Add item"}
           onAddItemButtonClick={this.onAddItemButtonClick.bind(this)}
         />
-        <List items={this.state.items}/>
+        <List items={this.state.items} onTextFieldInputChange={this.onTextFieldInputChange.bind(this)}/>
       </div>
     );
   }
