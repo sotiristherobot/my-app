@@ -62,6 +62,10 @@ class Home extends React.Component {
     this.createItem();
   }
 
+  onLoginButtonClick() {
+      console.log('loginbutton clicked');
+  }
+
   render() {
     return (
       <div className="wrapper">
@@ -69,8 +73,10 @@ class Home extends React.Component {
           ref={this.addItemButtonRef}
           disabled={false}
           title={"Sotiris Home"}
-          addButtonText={"Add item"}
+          addButtonText="Add item"
+          loginButtonText="Login"
           onAddItemButtonClick={this.onAddItemButtonClick.bind(this)}
+          onLoginButtonClick={this.onLoginButtonClick.bind(this)}
         />
         <List items={this.state.items} onTextFieldInputChange={this.onTextFieldInputChange.bind(this)}/>
       </div>
