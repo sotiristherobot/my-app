@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import './Home.css';
+import "./Home.css";
 
 // components
 import Header from "./Header";
@@ -10,7 +10,8 @@ class Home extends React.Component {
     items: {
       itemId: 0, // keep track of created rows
       items: []
-    }
+    },
+    isAuthorized: true
   };
 
   constructor(props) {
@@ -53,7 +54,7 @@ class Home extends React.Component {
           itemId: prevState.items.itemId,
           items: newItemsState
         }
-      }
+      };
     });
   }
 
@@ -63,7 +64,7 @@ class Home extends React.Component {
   }
 
   onLoginButtonClick() {
-      console.log('loginbutton clicked');
+    console.log("loginbutton clicked");
   }
 
   render() {
@@ -78,7 +79,11 @@ class Home extends React.Component {
           onAddItemButtonClick={this.onAddItemButtonClick.bind(this)}
           onLoginButtonClick={this.onLoginButtonClick.bind(this)}
         />
-        <List items={this.state.items} onTextFieldInputChange={this.onTextFieldInputChange.bind(this)}/>
+        <List
+          items={this.state.items}
+          isAuthorized={this.state.isAuthorized}
+          onTextFieldInputChange={this.onTextFieldInputChange.bind(this)}
+        />
       </div>
     );
   }

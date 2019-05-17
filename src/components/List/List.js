@@ -1,6 +1,9 @@
 import React from "react";
 import "./List.css";
 
+// HOCs
+import withAuth from "../HOCs/AuthHOC";
+
 // components
 import ListItem from "./ListItem";
 
@@ -12,15 +15,21 @@ const withToDoEnhancements = Component => props =>
     <Component {...props} />
   );
 
-export default withToDoEnhancements(function List(props) {
-  return props.items.items.map(item => (
-    <ListItem
-      className="listWrapper"
-      key={item.id}
-      id={item.id}
-      title={item.title}
-      content={item.content}
-      onTextFieldInputChange={props.onTextFieldInputChange}
-    />
-  ));
-});
+export default withAuth(
+  withToDoEnhancements(function List(props) {
+    return (
+      <div>
+        {props.items.items.map(item => (
+          <ListItem
+            className="listWrapper"
+            key={item.id}
+            id={item.id}
+            title={item.title}
+            content={item.content}
+            onTextFieldInputChange={props.onTextFieldInputChange}
+          />
+        ))}
+      </div>
+    );
+  })
+);
