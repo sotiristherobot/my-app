@@ -1,6 +1,5 @@
-.wrapper {
+.headerWrapper {
     display: flex;
-    align-items: center;
-    justify-content: space-around;
     flex-flow: row;
+    align-items: center;
 }

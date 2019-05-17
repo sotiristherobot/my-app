@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import './Home.css';
 
 // components
 import Header from "./Header";
@@ -48,7 +49,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div>
+      <div className="wrapper">
         <Header
           ref={this.addItemButtonRef}
           disabled={false}

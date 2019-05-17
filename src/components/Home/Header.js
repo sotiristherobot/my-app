@@ -1,9 +1,9 @@
 import React from "react";
-import "./Header.css";
+import './Header.css';
 
 export default React.forwardRef((props, ref) => {
     return (
-        <header className="wrapper">
+        <header className="headerWrapper">
             <h1>{props.title}</h1>
             <button disabled={props.disabled} ref={ref} onClick={props.onAddItemButtonClick}>
                 {props.addButtonText}
