@@ -4,19 +4,23 @@ import "./List.css";
 // components
 import ListItem from "./ListItem";
 
-export default function List(props) {
-  return props.items.items.length > 0 ? (
-    props.items.items.map(item => (
-      <ListItem
-        className="listWrapper"
-        key={item.id}
-        id={item.id}
-        title={item.title}
-        content={item.content}
-        onTextFieldInputChange={props.onTextFieldInputChange}
-      />
-    ))
+// simple HOC that later needs to be moved to another file and reused
+const withToDoEnhancements = Component => props =>
+  !props.items.items.length > 0 ? (
+    <p>Nothing to show</p>
   ) : (
-    <p>Nothing to show yet</p>
+    <Component {...props} />
   );
-}
+
+export default withToDoEnhancements(function List(props) {
+  return props.items.items.map(item => (
+    <ListItem
+      className="listWrapper"
+      key={item.id}
+      id={item.id}
+      title={item.title}
+      content={item.content}
+      onTextFieldInputChange={props.onTextFieldInputChange}
+    />
+  ));
+});
