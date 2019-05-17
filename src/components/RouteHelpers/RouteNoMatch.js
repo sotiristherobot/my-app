@@ -5,7 +5,7 @@ export default function RouteNoMatch() {
     return (
         <div>
             <p>No route for this</p>
-            <Link to={"/"}>back to home</Link>
+            <Link to="/">back to home</Link>
         </div>
     )
 }
