@@ -39,7 +39,22 @@ class Home extends React.Component {
   }
 
   onTextFieldInputChange(e, id) {
-    console.log(id);
+    const txtObjectIndex = this.state.items.items.findIndex(v => v.id === id);
+    let newItemsState = this.state.items.items.slice(); // clone array to obtain a clone of the object
+
+    newItemsState[txtObjectIndex] = {
+      ...newItemsState[txtObjectIndex],
+      [e.target.name]: e.target.value
+    };
+
+    this.setState(prevState => {
+      return {
+        items: {
+          itemId: prevState.items.itemId,
+          items: newItemsState
+        }
+      }
+    });
   }
 
   onAddItemButtonClick() {
