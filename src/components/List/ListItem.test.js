@@ -6,7 +6,9 @@ import ListItem from './ListItem';
 const setup = () => {
   const props = {
       actions: {
-          onTextFieldInputChange: jest.fn()
+          onTextFieldInputChange: jest.fn(),
+          title: 'title',
+          content: 'content'
       }
   };
   return props;
@@ -14,7 +16,6 @@ const setup = () => {
 
 describe('<ListItem/>', () => {
     let {actions} = setup();
-    debugger;
     const wrapper = mount(<ListItem {...actions}/>);
 
     it('should render title textfield', () => {
@@ -35,5 +36,20 @@ describe('<ListItem/>', () => {
         contentField.simulate('change');
         expect(actions.onTextFieldInputChange.mock.calls.length).toBe(2);
     });
+
+    it('sets the props correctly on text fields', () => {
+        const titleField = wrapper.find('input[name="title"]'),
+            contentField = wrapper.find('input[name="content"]');
+
+        expect(titleField.instance().value).toBe('title');
+        expect(contentField.instance().value).toBe('content');
+
+        wrapper.setProps({ title: 'bar', content: 'foo' });
+
+        expect(titleField.instance().value).toBe('bar');
+        expect(contentField.instance().value).toBe('foo');
+    });
+
+
 });
 
