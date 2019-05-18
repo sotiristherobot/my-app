@@ -7,11 +7,13 @@ export default function ListItem(props) {
         name="title"
         onChange={e => props.onTextFieldInputChange(e, props.id)}
         placeholder="title"
+        value={props.title}
       />
       <input
         name="content"
         onChange={e => props.onTextFieldInputChange(e, props.id)}
         placeholder="content"
+        value={props.content}
       />
     </div>
   );
