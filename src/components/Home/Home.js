@@ -21,6 +21,10 @@ class Home extends React.Component {
     this.addItemButtonRef = React.createRef();
   }
 
+  /**
+   * Creates a new item, and sets it to the state. This function will be transformed to use Redux's store
+   * instead.
+   */
   createItem() {
     this.setState(prevState => {
       let nextItemId = prevState.items.itemId + 1;
@@ -40,6 +44,11 @@ class Home extends React.Component {
     });
   }
 
+  /**
+   * When input on textfield changes, sets the state with the new values.
+   * @param {event} e - The on change event from textfield
+   * @param {number} id - The id of the textfield. We use this to find which textfield has changed.
+   */
   onTextFieldInputChange(e, id) {
     const txtObjectIndex = this.state.items.items.findIndex(v => v.id === id);
     let newItemsState = this.state.items.items.slice(); // clone array to obtain a clone of the object
@@ -59,6 +68,10 @@ class Home extends React.Component {
     });
   }
 
+  /**
+   * OnClick handler for the add new item button. It calls createItem which creates a new item
+   * in the local state.
+   */
   onAddItemButtonClick() {
     // this.addItemButtonRef.current.disabled = true;
     this.createItem();
@@ -92,5 +105,4 @@ class Home extends React.Component {
 
 // map state to props
 const mapStateToProps = state => state;
-
 export default connect(mapStateToProps)(Home);
