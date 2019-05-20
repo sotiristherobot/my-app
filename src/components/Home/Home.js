@@ -1,4 +1,5 @@
 import React, { Component } from "react";
+import { connect } from "react-redux";
 import "./Home.css";
 
 // components
@@ -88,4 +89,8 @@ class Home extends React.Component {
     );
   }
 }
-export default Home;
+
+// map state to props
+const mapStateToProps = state => state;
+
+export default connect(mapStateToProps)(Home);
