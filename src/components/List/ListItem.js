@@ -1,23 +1,22 @@
 import React from "react";
 import './ListItem.css';
+import {Box, Grommet, TextInput} from 'grommet';
 
 export default function ListItem(props) {
   return (
-    <div className="listItemWrapper">
-      <input
-        name="title"
-        className="listItem"
-        onChange={e => props.onTextFieldInputChange(e, props.id)}
-        placeholder="title"
-        value={props.title}
-      />
-      <input
-        name="content"
-        className="listItem"
-        onChange={e => props.onTextFieldInputChange(e, props.id)}
-        placeholder="content"
-        value={props.content}
-      />
-    </div>
+    <Box direction="row" flex={true} gap="small" justify="stretch" margin="small">
+        <TextInput
+            name="title"
+            placeholder="title"
+            value={props.title}
+            onChange={e => props.onTextFieldInputChange(e, props.id)}
+        />
+        <TextInput
+            name="content"
+            placeholder="content"
+            value={props.content}
+            onChange={e => props.onTextFieldInputChange(e, props.id)}
+        />
+    </Box>
   );
 }
