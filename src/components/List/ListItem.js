@@ -1,6 +1,6 @@
 import React from "react";
 import './ListItem.css';
-import {Box, Grommet, TextInput} from 'grommet';
+import {Box, TextInput} from 'grommet';
 
 export default function ListItem(props) {
   return (

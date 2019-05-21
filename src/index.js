@@ -6,12 +6,15 @@ import reducer from './reducers'
 import "./index.css";
 import App from "./App";
 import * as serviceWorker from "./serviceWorker";
+import {Grommet} from 'grommet';
 
 const store = createStore(reducer);
 
 ReactDOM.render(
     <Provider store={store}>
-        <App />,
+        <Grommet>
+            <App />
+        </Grommet>
     </Provider>,
     document.getElementById("root"));
 

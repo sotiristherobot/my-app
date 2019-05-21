@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 import "./Home.css";
 
@@ -83,7 +83,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <div className="wrapper">
+      <Fragment>
         <Header
           ref={this.addItemButtonRef}
           disabled={false}
@@ -98,7 +98,7 @@ class Home extends React.Component {
           isAuthorized={this.state.isAuthorized}
           onTextFieldInputChange={this.onTextFieldInputChange.bind(this)}
         />
-      </div>
+      </Fragment>
     );
   }
 }
