@@ -1,5 +1,6 @@
 import React from "react";
-import { Box } from "grommet";
+import { Box, Button } from "grommet";
+import { Add, Login } from "grommet-icons";
 
 export default React.forwardRef((props, ref) => {
   return (
@@ -13,22 +14,22 @@ export default React.forwardRef((props, ref) => {
         margin="small"
       >
         <h1>{props.title}</h1>
-        <div>
-          <button
+        <Box direction="row" gap="small">
+          <Button
             disabled={props.disabled}
             ref={ref}
+            icon={<Add/>}
             onClick={props.onAddItemButtonClick}
-          >
-            {props.addButtonText}
-          </button>
-          <button
+            label={props.addButtonText}
+          />
+          <Button
             disabled={props.disabled}
             ref={ref}
+            icon={<Login/>}
             onClick={props.onLoginButtonClick}
-          >
-            {props.loginButtonText}
-          </button>
-        </div>
+            label={props.loginButtonText}
+          />
+        </Box>
       </Box>
     </header>
   );
