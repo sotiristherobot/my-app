@@ -10,7 +10,7 @@ export default React.forwardRef((props, ref) => {
         flex={true}
         gap="small"
         align="center"
-        justify="evenly"
+        justify="between"
         margin="small"
       >
         <h1>{props.title}</h1>
