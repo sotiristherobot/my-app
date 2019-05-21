@@ -2,7 +2,7 @@ import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
 
 // components
-import Header from "./Header";
+import Header from "../Header/Header";
 import List from "../List/List";
 import {Box} from "grommet/es6";
 
@@ -88,8 +88,8 @@ class Home extends React.Component {
           ref={this.addItemButtonRef}
           disabled={false}
           title={"Sotiris Home"}
-          addButtonText="Add item"
-          loginButtonText="Login"
+          addButtonText="add"
+          loginButtonText="login"
           onAddItemButtonClick={this.onAddItemButtonClick.bind(this)}
           onLoginButtonClick={this.onLoginButtonClick.bind(this)}
         />
