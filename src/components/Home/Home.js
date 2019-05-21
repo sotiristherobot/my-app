@@ -1,10 +1,10 @@
 import React, { Component, Fragment } from "react";
 import { connect } from "react-redux";
-import "./Home.css";
 
 // components
 import Header from "./Header";
 import List from "../List/List";
+import {Box} from "grommet/es6";
 
 class Home extends React.Component {
   state = {
@@ -83,7 +83,7 @@ class Home extends React.Component {
 
   render() {
     return (
-      <Fragment>
+      <Box direction="column" flex={true} gap="small" justify="stretch" margin="small">
         <Header
           ref={this.addItemButtonRef}
           disabled={false}
@@ -98,7 +98,7 @@ class Home extends React.Component {
           isAuthorized={this.state.isAuthorized}
           onTextFieldInputChange={this.onTextFieldInputChange.bind(this)}
         />
-      </Fragment>
+      </Box>
     );
   }
 }
