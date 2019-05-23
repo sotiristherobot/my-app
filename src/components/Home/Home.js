@@ -12,7 +12,8 @@ class Home extends React.Component {
       itemId: 0, // keep track of created rows
       items: []
     },
-    isAuthorized: true
+    isAuthorized: true,
+    editMode: true
   };
 
   constructor(props) {
@@ -96,6 +97,7 @@ class Home extends React.Component {
         <List
           items={this.state.items}
           isAuthorized={this.state.isAuthorized}
+          editMode={this.state.editMode}
           onTextFieldInputChange={this.onTextFieldInputChange.bind(this)}
         />
       </Box>

@@ -27,6 +27,7 @@ export default withAuth(
             title={item.title}
             content={item.content}
             onTextFieldInputChange={props.onTextFieldInputChange}
+            editMode={props.editMode}
           />
         ))}
       </div>
