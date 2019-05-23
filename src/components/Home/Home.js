@@ -83,6 +83,13 @@ class Home extends React.Component {
     console.log("loginbutton clicked");
   }
 
+  /**
+   * On item save click handler. Sets the state to !editMode so we can switch between edit/view mode
+  */
+  onItemSaveClick() {
+    this.setState((prevState => ({editMode: !prevState.editMode})));
+  }
+
   render() {
     return (
       <Box direction="column" flex={true} gap="small" justify="stretch" margin="small">
@@ -100,6 +107,7 @@ class Home extends React.Component {
           isAuthorized={this.state.isAuthorized}
           editMode={this.state.editMode}
           onTextFieldInputChange={this.onTextFieldInputChange.bind(this)}
+          onItemSaveClick={this.onItemSaveClick.bind(this)}
         />
       </Box>
     );

@@ -6,6 +6,8 @@ import withAuth from "../HOCs/AuthHOC";
 
 // components
 import ListItem from "./ListItem";
+import { Save } from "grommet-icons/es6";
+import { Button, Box } from "grommet/es6";
 
 // simple HOC that later needs to be moved to another file and reused
 const withToDoEnhancements = Component => props =>
@@ -18,7 +20,15 @@ const withToDoEnhancements = Component => props =>
 export default withAuth(
   withToDoEnhancements(function List(props) {
     return (
-      <div>
+      <Box>
+        {props.editMode && (
+          <Button
+            icon={<Save />}
+            onClick={props.onItemSaveClick}
+            label={"Save"}
+            alignSelf={"center"}
+          />
+        )}
         {props.items.items.map(item => (
           <ListItem
             className="listWrapper"
@@ -30,7 +40,7 @@ export default withAuth(
             editMode={props.editMode}
           />
         ))}
-      </div>
+      </Box>
     );
   })
 );
