@@ -13,7 +13,7 @@ class Home extends React.Component {
       items: []
     },
     isAuthorized: true,
-    editMode: true
+    editMode: false
   };
 
   constructor(props) {
@@ -40,7 +40,8 @@ class Home extends React.Component {
               content: "content"
             }
           ]
-        }
+        },
+        editMode: !prevState.editMode //TODO this needs to change and be based on when the button add is clicked
       };
     });
   }
@@ -74,7 +75,7 @@ class Home extends React.Component {
    * in the local state.
    */
   onAddItemButtonClick() {
-    // this.addItemButtonRef.current.disabled = true;
+    this.addItemButtonRef.current.disabled = true;
     this.createItem();
   }
 
@@ -87,7 +88,7 @@ class Home extends React.Component {
       <Box direction="column" flex={true} gap="small" justify="stretch" margin="small">
         <Header
           ref={this.addItemButtonRef}
-          disabled={false}
+          disabled={this.state.editMode}
           title={"Sotiris Home"}
           addButtonText="add"
           loginButtonText="login"
