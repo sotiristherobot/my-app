@@ -27,5 +27,14 @@ describe('<Login/>', () => {
     });
 
 
+    it('should have a login button defined', () => {
+        const button = wrapper.find('button');
+
+        expect(button).toBeDefined();
+
+        expect(button.contains('Save')).toBe(true);
+    });
+
+
 
 });
