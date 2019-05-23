@@ -2,7 +2,7 @@ import React, { Component } from "react";
 
 // ui - imports
 import {Box, Button, TextInput} from "grommet";
-import {Login, Save} from "grommet-icons/es6";
+import { Login } from "grommet-icons"
 
 class LoginForm extends React.Component {
   constructor(props) {
@@ -26,14 +26,16 @@ class LoginForm extends React.Component {
           >
             <TextInput
                 placeholder="Username"
+                name="username"
                 value="value"
             />
             <TextInput
                 placeholder="Password"
+                name="password"
                 value="value"
             />
             <Button
-                icon={<Save />}
+                icon={<Login />}
                 // onClick={props.onItemSaveClick}
                 label={"Save"}
                 alignSelf={"center"}
