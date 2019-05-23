@@ -36,7 +36,7 @@ class LoginForm extends React.Component {
             />
             <Button
                 icon={<Login />}
-                // onClick={props.onItemSaveClick}
+                onClick={this.props.onItemSaveClick}
                 label={"Save"}
                 alignSelf={"center"}
             />

@@ -7,16 +7,15 @@ import LoginForm from './Login';
 const setup = () => {
     const props = {
         actions: {
-            onTextFieldInputChange: jest.fn(),
-            title: 'title',
-            content: 'content'
+            onItemSaveClick: jest.fn()
         }
     };
     return props;
 };
 
 describe('<Login/>', () => {
-   const wrapper = mount(<LoginForm />);
+    let {actions} = setup();
+   const wrapper = mount(<LoginForm {...actions} />);
 
    it('should have username textfield defined', () => {
        expect(wrapper.find('input[name="username"]').exists()).toBe(true);
@@ -29,12 +28,14 @@ describe('<Login/>', () => {
 
     it('should have a login button defined', () => {
         const button = wrapper.find('button');
-
         expect(button).toBeDefined();
+        expect(button.render().text()).toBe('Save');
 
-        expect(button.contains('Save')).toBe(true);
     });
-
-
-
+    it('should call onItemSaveClick when button is clicked', () => {
+        const button = wrapper.find('button');
+        expect(actions.onItemSaveClick.mock.calls.length).toBe(0);
+        button.simulate('click');
+        expect(actions.onItemSaveClick.mock.calls.length).toBe(1);
+    })
 });
