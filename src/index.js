@@ -12,7 +12,7 @@ const store = createStore(reducer);
 
 ReactDOM.render(
     <Provider store={store}>
-        <Grommet>
+        <Grommet full={true}>
             <App />
         </Grommet>
     </Provider>,
