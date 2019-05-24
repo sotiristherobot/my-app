@@ -17,30 +17,28 @@ const withToDoEnhancements = Component => props =>
     <Component {...props} />
   );
 
-export default withAuth(
-  withToDoEnhancements(function List(props) {
-    return (
-      <Box>
-        {props.editMode && (
-          <Button
-            icon={<Save />}
-            onClick={props.onItemSaveClick}
-            label={"Save"}
-            alignSelf={"center"}
-          />
-        )}
-        {props.items.items.map(item => (
-          <ListItem
-            className="listWrapper"
-            key={item.id}
-            id={item.id}
-            title={item.title}
-            content={item.content}
-            onTextFieldInputChange={props.onTextFieldInputChange}
-            editMode={props.editMode}
-          />
-        ))}
-      </Box>
-    );
-  })
-);
+export default withToDoEnhancements(function List(props) {
+  return (
+    <Box>
+      {props.editMode && (
+        <Button
+          icon={<Save />}
+          onClick={props.onItemSaveClick}
+          label={"Save"}
+          alignSelf={"center"}
+        />
+      )}
+      {props.items.items.map(item => (
+        <ListItem
+          className="listWrapper"
+          key={item.id}
+          id={item.id}
+          title={item.title}
+          content={item.content}
+          onTextFieldInputChange={props.onTextFieldInputChange}
+          editMode={props.editMode}
+        />
+      ))}
+    </Box>
+  );
+});

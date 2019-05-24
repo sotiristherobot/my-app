@@ -10,7 +10,7 @@ class LoginForm extends React.Component {
   }
 
   onLoginButtonClick() {
-    console.log('test');
+    this.props.history.push('/', {authed: true})
   }
   render() {
     return (

@@ -1,6 +1,6 @@
 import React from "react";
 import { Box, Button } from "grommet";
-import { Add, Login } from "grommet-icons";
+import { Add, Logout } from "grommet-icons";
 
 export default React.forwardRef((props, ref) => {
   return (
@@ -27,12 +27,12 @@ export default React.forwardRef((props, ref) => {
             }
             {
                 //do not create the addItemButton if there is no handler for it.
-                props.onLoginButtonClick && <Button
+                props.onLogoutButtonClick && <Button
                     disabled={props.disabled}
                     ref={ref}
-                    icon={<Login/>}
-                    onClick={props.onLoginButtonClick}
-                    label={props.loginButtonText}
+                    icon={<Logout/>}
+                    onClick={props.onLogoutButtonClick}
+                    label={props.logoutButtonText}
                 />
             }
         </Box>

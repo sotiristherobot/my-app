@@ -4,7 +4,9 @@ import { connect } from "react-redux";
 // components
 import Header from "../Header/Header";
 import List from "../List/List";
-import {Box} from "grommet/es6";
+import { Box } from "grommet/es6";
+import withAuth from "../HOCs/AuthHOC";
+import { withRouter } from "react-router-dom";
 
 class Home extends React.Component {
   state = {
@@ -12,7 +14,7 @@ class Home extends React.Component {
       itemId: 0, // keep track of created rows
       items: []
     },
-    isAuthorized: true,
+    isAuthorized: false,
     editMode: false
   };
 
@@ -79,28 +81,34 @@ class Home extends React.Component {
     this.createItem();
   }
 
-  onLoginButtonClick() {
-    console.log("loginbutton clicked");
+  onLogoutButtonClick() {
+    this.props.history.push("/", undefined);
   }
 
   /**
    * On item save click handler. Sets the state to !editMode so we can switch between edit/view mode
-  */
+   */
   onItemSaveClick() {
-    this.setState((prevState => ({editMode: !prevState.editMode})));
+    this.setState(prevState => ({ editMode: !prevState.editMode }));
   }
 
   render() {
     return (
-      <Box direction="column" flex={true} gap="small" justify="stretch" margin="small">
+      <Box
+        direction="column"
+        flex={true}
+        gap="small"
+        justify="stretch"
+        margin="small"
+      >
         <Header
           ref={this.addItemButtonRef}
           disabled={this.state.editMode}
           title={"Sotiris Home"}
           addButtonText="add"
-          loginButtonText="login"
+          logoutButtonText="Logout"
           onAddItemButtonClick={this.onAddItemButtonClick.bind(this)}
-          onLoginButtonClick={this.onLoginButtonClick.bind(this)}
+          onLogoutButtonClick={this.onLogoutButtonClick.bind(this)}
         />
         <List
           items={this.state.items}
@@ -116,4 +124,4 @@ class Home extends React.Component {
 
 // map state to props
 const mapStateToProps = state => state;
-export default connect(mapStateToProps)(Home);
+export default connect(mapStateToProps)(withAuth(withRouter(Home)));
