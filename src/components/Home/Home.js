@@ -82,7 +82,7 @@ class Home extends React.Component {
   }
 
   onLogoutButtonClick() {
-    this.props.history.push("/", undefined);
+    this.props.history.push("/");
   }
 
   /**

@@ -3,7 +3,7 @@ import { Redirect } from "react-router-dom";
 
 export default function withAuth(Component) {
   return props => {
-    const { state } = props.history.location;
+    const { state } = props.location;
 
     return state && state.authed ? (
       <Component {...props} />
