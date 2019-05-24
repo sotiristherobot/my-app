@@ -8,6 +8,10 @@ class LoginForm extends React.Component {
   constructor(props) {
     super(props);
   }
+
+  onLoginButtonClick() {
+    console.log('test');
+  }
   render() {
     return (
         <Box
@@ -36,7 +40,7 @@ class LoginForm extends React.Component {
             />
             <Button
                 icon={<Login />}
-                onClick={this.props.onItemSaveClick}
+                onClick={this.onLoginButtonClick.bind(this)}
                 label={"Save"}
                 alignSelf={"center"}
             />

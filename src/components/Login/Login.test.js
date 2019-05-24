@@ -1,5 +1,5 @@
 import React from 'react';
-import { mount } from 'enzyme';
+import { mount, shallow } from 'enzyme';
 import { Login } from "grommet-icons";
 
 import LoginForm from './Login';
@@ -32,10 +32,13 @@ describe('<Login/>', () => {
         expect(button.render().text()).toBe('Save');
 
     });
-    it('should call onItemSaveClick when button is clicked', () => {
+    it('should call onLoginButtonClick when button is clicked', () => {
         const button = wrapper.find('button');
-        expect(actions.onItemSaveClick.mock.calls.length).toBe(0);
-        button.simulate('click');
-        expect(actions.onItemSaveClick.mock.calls.length).toBe(1);
-    })
+        wrapper.instance().onLoginButtonClick = jest.fn();
+        wrapper.instance().forceUpdate();
+        wrapper.update();
+
+        button.find('button').simulate('click');
+        expect(wrapper.instance().onLoginButtonClick).toBeCalled();
+    });
 });
